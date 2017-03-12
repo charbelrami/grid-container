@@ -1,0 +1,23 @@
+{
+  "name": "grid-container",
+  "version": "0.1.0",
+  "description": "CSS Grid Layout + Web Components",
+  "main": "grid-container.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charbelrami/grid-container.git"
+  },
+  "keywords": [
+    "grid",
+    "grid-layout",
+    "web-components",
+    "custom-elements",
+    "shadow-dom"
+  ],
+  "author": "Charbel Rami",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/charbelrami/grid-container/issues"
+  },
+  "homepage": "https://github.com/charbelrami/grid-container#readme"
+}

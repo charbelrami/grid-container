@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible"
+        content="ie=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no">
+  <title>Grid Container &middot; Grid Layout + Web Components</title>
+  <script src="grid-container.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Karla"
+        rel="stylesheet">
+  <style>
+    body {
+      font-family: Karla, sans-serif;
+    }
+    
+    grid-container {
+      font-size: 1.25em;
+    }
+    
+    grid-item {
+      background-color: #187c60;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5vmin;
+    }
+    
+    pre {
+      font-family: consolas, monospace;
+    }
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Grid Container</h1>
+    <p>Grid Layout + Web Components</p>
+  </header>
+
+  <main>
+    <pre><code>&lt;grid-container gutter="5vmin"
+                areas="
+                'first second .'
+                'first third third'"&gt;
+  &lt;grid-item area="first"&gt;First&lt;/grid-item&gt;
+  &lt;grid-item area="second"&gt;Second&lt;/grid-item&gt;
+  &lt;grid-item area="third"&gt;Third&lt;/grid-item&gt;
+  &lt;grid-item row="first-end"
+             column="second-end"&gt;
+    Fourth
+  &lt;/grid-item&gt;
+&lt;/grid-container&gt;</code></pre>
+
+    <grid-container gutter="5vmin"
+                    areas="
+                  'first second .'
+                  'first third third'
+                  ">
+      <grid-item area="first">First</grid-item>
+      <grid-item area="second">Second</grid-item>
+      <grid-item area="third">Third</grid-item>
+      <grid-item row="first-end"
+                 column="second-end">
+        Fourth
+      </grid-item>
+    </grid-container>
+  </main>
+
+  <footer>
+    <p><small>&copy; 2017 Charbel Rami. <a href="https://github.com/charbelrami/grid-container">Source code</a> licensed under the MIT License.</small></p>
+  </footer>
+</body>
+
+</html>

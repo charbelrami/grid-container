@@ -26,7 +26,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 5vmin;
+      padding: 2vmin;
     }
     
     pre {
@@ -37,16 +37,16 @@
 </head>
 
 <body>
-  <header>
-    <h1>Grid Container</h1>
-    <p>Grid Layout + Web Components</p>
-  </header>
+  <h1>Grid Container</h1>
 
-  <main>
-    <pre><code>&lt;grid-container gutter="5vmin"
-                areas="
-                'first second .'
-                'first third third'"&gt;
+  <blockquote>
+    <p>CSS Grid Layout + Custom Elements v1 + Shadow DOM v1</p>
+  </blockquote>
+
+  <pre><code>
+&lt;grid-container gutter="5vmin"
+                areas="'first second .'
+                       'first third third'"&gt;
   &lt;grid-item area="first"&gt;First&lt;/grid-item&gt;
   &lt;grid-item area="second"&gt;Second&lt;/grid-item&gt;
   &lt;grid-item area="third"&gt;Third&lt;/grid-item&gt;
@@ -54,22 +54,112 @@
              column="second-end"&gt;
     Fourth
   &lt;/grid-item&gt;
-&lt;/grid-container&gt;</code></pre>
+&lt;/grid-container&gt;
+</code></pre>
 
-    <grid-container gutter="5vmin"
-                    areas="
-                  'first second .'
-                  'first third third'
+  <grid-container gutter="5vmin"
+                  areas="'first second .'
+                       'first third third'">
+    <grid-item area="first">First</grid-item>
+    <grid-item area="second">Second</grid-item>
+    <grid-item area="third">Third</grid-item>
+    <grid-item row="first-end"
+               column="second-end">
+      Fourth
+    </grid-item>
+  </grid-container>
+
+  <h2>Reference</h2>
+
+  <h3>Attributes</h3>
+
+  <h4>Areas</h4>
+
+  <blockquote>
+    <p>Creates a grid template using named <code>grid-item</code>s</p>
+  </blockquote>
+
+  <pre><code>
+&lt;grid-container gutter="1rem"
+                areas="
+                  'a a a a a a a a a b b b'
+                  'a a a a a a a a a c c c'
+                  '. . . . . . . . . c c c'
+                  '. . . . d d d d . . . .'
+                  "&gt;
+  &lt;grid-item area="a"&gt;a&lt;/grid-item&gt;
+  &lt;grid-item area="b"&gt;b&lt;/grid-item&gt;
+  &lt;grid-item area="c"&gt;c&lt;/grid-item&gt;
+  &lt;grid-item area="d"&gt;d&lt;/grid-item&gt;
+&lt;/grid-container&gt;
+</code></pre>
+
+  <grid-container gutter="1rem"
+                  areas="
+                  'a a a a a a a a a b b b'
+                  'a a a a a a a a a c c c'
+                  '. . . . . . . . . c c c'
+                  '. . . . d d d d . . . .'
                   ">
-      <grid-item area="first">First</grid-item>
-      <grid-item area="second">Second</grid-item>
-      <grid-item area="third">Third</grid-item>
-      <grid-item row="first-end"
-                 column="second-end">
-        Fourth
-      </grid-item>
-    </grid-container>
-  </main>
+    <grid-item area="a">a</grid-item>
+    <grid-item area="b">b</grid-item>
+    <grid-item area="c">c</grid-item>
+    <grid-item area="d">d</grid-item>
+  </grid-container>
+
+  <h4>Gutter</h4>
+
+  <blockquote>
+    <p>Specifies all gutters, or gutter between rows and gutter between columns separately</p>
+  </blockquote>
+
+  <pre><code>
+&lt;grid-container gutter="16px"
+                areas="
+                'a b'
+                'c d'
+                "&gt;
+  &lt;grid-item area="a"&gt;a&lt;/grid-item&gt;
+  &lt;grid-item area="b"&gt;b&lt;/grid-item&gt;
+  &lt;grid-item area="c"&gt;c&lt;/grid-item&gt;
+  &lt;grid-item area="d"&gt;d&lt;/grid-item&gt;
+&lt;/grid-container&gt;
+</code></pre>
+
+  <grid-container gutter="16px"
+                  areas="
+                'a b'
+                'c d'
+                ">
+    <grid-item area="a">a</grid-item>
+    <grid-item area="b">b</grid-item>
+    <grid-item area="c">c</grid-item>
+    <grid-item area="d">d</grid-item>
+  </grid-container>
+
+  <pre><code>
+&lt;grid-container gutter="5vh 10vw"
+                areas="
+                'a b'
+                'c d'
+                "&gt;
+  &lt;grid-item area="a"&gt;a&lt;/grid-item&gt;
+  &lt;grid-item area="b"&gt;b&lt;/grid-item&gt;
+  &lt;grid-item area="c"&gt;c&lt;/grid-item&gt;
+  &lt;grid-item area="d"&gt;d&lt;/grid-item&gt;
+&lt;/grid-container&gt;
+</code></pre>
+
+  <grid-container gutter="5vh 10vw"
+                  areas="
+                'a b'
+                'c d'
+                ">
+    <grid-item area="a">a</grid-item>
+    <grid-item area="b">b</grid-item>
+    <grid-item area="c">c</grid-item>
+    <grid-item area="d">d</grid-item>
+  </grid-container>
 
   <footer>
     <p><small>&copy; 2017 Charbel Rami. <a href="https://github.com/charbelrami/grid-container">Source code</a> licensed under the MIT License.</small></p>

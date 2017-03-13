@@ -7,6 +7,8 @@ customElements.define(
       shadowRoot.innerHTML = `<style>
         :host {
           display: grid;
+          grid-auto-rows: 1fr;
+          grid-auto-columns: 1fr;
         }
         :host([areas]) {
           grid-template-areas: var(--areas);

@@ -10,6 +10,9 @@ customElements.define(
           grid-auto-rows: 1fr;
           grid-auto-columns: 1fr;
         }
+        :host([grid]) {
+          grid: var(--grid);
+        }
         :host([areas]) {
           grid-template-areas: var(--areas);
         }
@@ -20,7 +23,7 @@ customElements.define(
         <slot></slot>`;
     }
     static get observedAttributes() {
-      return ['gutter', 'areas'];
+      return ['gutter', 'areas', 'grid'];
     }
 
     get areas() {
@@ -32,6 +35,18 @@ customElements.define(
         this.setAttribute('areas', val);
       } else {
         this.removeAttribute('areas');
+      }
+    }
+
+    get grid() {
+      return this.hasAttribute('grid');
+    }
+
+    set grid(val) {
+      if (val) {
+        this.setAttribute('grid', val);
+      } else {
+        this.removeAttribute('grid');
       }
     }
 
@@ -54,6 +69,10 @@ customElements.define(
 
       if (name === 'areas') {
         this.style.setProperty('--areas', newVal);
+      }
+
+      if (name === 'grid') {
+        this.style.setProperty('--grid', newVal);
       }
     }
   }

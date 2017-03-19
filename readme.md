@@ -16,7 +16,7 @@
 </grid-container>
 ```
 
-![Grid Container example](example.png)
+![Grid Container example](docs/img/example.png)
 
 ## Reference
 
@@ -40,7 +40,59 @@
   <grid-item area="d">d</grid-item>
 </grid-container>
 ```
-![Areas example](example-areas.png)
+
+![Areas example](docs/img/example-areas.png)
+
+#### Grid
+
+> Creates a grid template using named `grid-item`s. Specifies dimensions for rows and columns
+
+```html
+<grid-container gutter="1rem"
+                grid="
+                  'a    b' minmax(100px, 1fr)
+                  'c    b' 2fr
+                / auto 70vw
+                ">
+  <grid-item area="a">a</grid-item>
+  <grid-item area="b">b</grid-item>
+  <grid-item area="c">c</grid-item>
+</grid-container>
+```
+
+![Grid attribute example](docs/img/example-grid.png)
+
+```html
+<grid-container gutter="20vmin 2vw"
+                grid="
+                  'a   b   d' 1fr
+                  'c   b   .' 2fr
+                / 3fr 3fr 1fr
+                ">
+  <grid-item area="a">a</grid-item>
+  <grid-item area="b">b</grid-item>
+  <grid-item area="c">c</grid-item>
+  <grid-item area="d"
+            style="position: sticky; top: 0;">sticky</grid-item>
+</grid-container>
+```
+
+![Grid attribute and sticky position example](docs/img/example-grid-sticky.gif)
+
+```html
+<grid-container gutter="16px"
+                grid="auto-flow 50px / repeat(auto-fill, 300px)">
+  <grid-item></grid-item>
+  <grid-item></grid-item>
+  <grid-item></grid-item>
+  <grid-item></grid-item>
+  <grid-item></grid-item>
+  <grid-item></grid-item>
+  <grid-item></grid-item>
+</grid-container>
+```
+
+![Grid auto example](docs/img/example-grid-auto.png)
 
 #### Gutter
 
@@ -59,7 +111,7 @@
 </grid-container>
 ```
 
-![Gutter example](example-gutter-all.png)
+![Gutter example](docs/img/example-gutter-all.png)
 
 ```html
 <grid-container gutter="5vh 10vw"
@@ -74,4 +126,4 @@
 </grid-container>
 ```
 
-![Gutter row-column example](example-gutter-row-column.png)
+![Gutter row-column example](docs/img/example-gutter-row-column.png)

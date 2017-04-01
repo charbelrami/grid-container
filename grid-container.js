@@ -1,10 +1,59 @@
-customElements.define(
-  'grid-container',
-  class extends HTMLElement {
-    constructor() {
-      super();
-      const shadowRoot = this.attachShadow({ mode: 'open' });
-      shadowRoot.innerHTML = `<style>
+class GridElement extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  setMediaQueries(attrName, val) {
+    let mediaQueryStyleNode = this.shadowRoot.querySelector(`#mq-${attrName}`);
+
+    if (mediaQueryStyleNode) {
+      mediaQueryStyleNode.innerHTML = '';
+    } else {
+      mediaQueryStyleNode = document.createElement('style');
+      mediaQueryStyleNode.id = `mq-${attrName}`;
+      const slot = this.shadowRoot.querySelector('slot');
+      this.shadowRoot.insertBefore(mediaQueryStyleNode, slot);
+    }
+
+    val = val.split(';');
+
+    for (const valElem of val) {
+      if (valElem.includes('@')) {
+        const valElemSplit = valElem.split('@');
+        const propertyVal = valElemSplit[0];
+        const query = valElemSplit[1];
+
+        let propertyName = `grid-${attrName}`;
+
+        if (attrName === 'grid') {
+          propertyName = 'grid';
+        }
+
+        if (attrName === 'gutter') {
+          propertyName = 'grid-gap';
+        }
+
+        if (attrName === 'areas') {
+          propertyName = 'grid-template-areas';
+        }
+
+        mediaQueryStyleNode.innerHTML += `@media ${query} {
+            :host([${attrName}]) {
+              ${propertyName}: ${propertyVal};
+            }
+          }`;
+      } else {
+        this.style.setProperty(`--${attrName}`, valElem);
+      }
+    }
+  }
+}
+
+class GridContainer extends GridElement {
+  constructor() {
+    super();
+    const shadowRoot = this.attachShadow({ mode: 'open' });
+    shadowRoot.innerHTML = `<style>
         :host {
           display: grid;
           grid-auto-rows: 1fr;
@@ -21,25 +70,31 @@ customElements.define(
         }
         </style>
         <slot></slot>`;
-    }
+  }
 
-    static get observedAttributes() {
-      return ['gutter', 'areas', 'grid'];
-    }
+  static get observedAttributes() {
+    return ['gutter', 'areas', 'grid'];
+  }
 
-    attributeChangedCallback(name, oldVal, newVal) {
+  attributeChangedCallback(name, oldVal, newVal) {
+    // removes last semicolon
+    newVal = newVal.replace(/;([\s]+)?$/, '');
+
+    if (newVal.includes(';')) {
+      this.setMediaQueries(name, newVal);
+    } else {
       this.style.setProperty(`--${name}`, newVal);
     }
   }
-);
+}
 
-customElements.define(
-  'grid-item',
-  class extends HTMLElement {
-    constructor() {
-      super();
-      const shadowRoot = this.attachShadow({ mode: 'open' });
-      shadowRoot.innerHTML = `<style>
+customElements.define('grid-container', GridContainer);
+
+class GridItem extends GridElement {
+  constructor() {
+    super();
+    const shadowRoot = this.attachShadow({ mode: 'open' });
+    shadowRoot.innerHTML = `<style>
         :host([area]) {
           grid-area: var(--area);
         }
@@ -51,14 +106,22 @@ customElements.define(
         }
         </style>
         <slot></slot>`;
-    }
+  }
 
-    static get observedAttributes() {
-      return ['area', 'row', 'column'];
-    }
+  static get observedAttributes() {
+    return ['area', 'row', 'column'];
+  }
 
-    attributeChangedCallback(name, oldVal, newVal) {
+  attributeChangedCallback(name, oldVal, newVal) {
+    // removes last semicolon
+    newVal = newVal.replace(/;([\s]+)?$/, '');
+
+    if (newVal.includes(';')) {
+      this.setMediaQueries(name, newVal);
+    } else {
       this.style.setProperty(`--${name}`, newVal);
     }
   }
-);
+}
+
+customElements.define('grid-item', GridItem);

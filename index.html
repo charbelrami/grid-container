@@ -43,8 +43,7 @@
     <p>CSS Grid Layout + Custom Elements v1 + Shadow DOM v1</p>
   </blockquote>
 
-  <pre><code>
-&lt;grid-container gutter="5vmin"
+  <pre><code>&lt;grid-container gutter="5vmin"
                 areas="'first second .'
                        'first third third'"&gt;
   &lt;grid-item area="first"&gt;First&lt;/grid-item&gt;
@@ -79,8 +78,7 @@
     <p>Creates a grid template using named <code>grid-item</code>s</p>
   </blockquote>
 
-  <pre><code>
-&lt;grid-container gutter="1rem"
+  <pre><code>&lt;grid-container gutter="1rem"
                 areas="
                   'a a a a a a a a a b b b'
                   'a a a a a a a a a c c c'
@@ -114,8 +112,7 @@
       for rows and columns</p>
   </blockquote>
 
-  <pre><code>
-&lt;grid-container gutter="1rem"
+  <pre><code>&lt;grid-container gutter="1rem"
                 grid="
                   'a    b' minmax(100px, 1fr)
                   'c    b' 2fr
@@ -138,8 +135,7 @@
     <grid-item area="c">c</grid-item>
   </grid-container>
 
-  <pre><code>
-&lt;grid-container gutter="20vmin 2vw"
+  <pre><code>&lt;grid-container gutter="20vmin 2vw"
                 grid="
                   'a   b   d' 1fr
                   'c   b   .' 2fr
@@ -166,8 +162,7 @@
                style="position: sticky; top: 0;">sticky</grid-item>
   </grid-container>
 
-  <pre><code>
-&lt;grid-container gutter="16px"
+  <pre><code>&lt;grid-container gutter="16px"
                 grid="auto-flow 50px / repeat(auto-fill, 300px)"&gt;
   &lt;grid-item&gt;&lt;/grid-item&gt;
   &lt;grid-item&gt;&lt;/grid-item&gt;
@@ -196,8 +191,7 @@
     <p>Specifies all gutters, or gutter between rows and gutter between columns separately</p>
   </blockquote>
 
-  <pre><code>
-&lt;grid-container gutter="16px"
+  <pre><code>&lt;grid-container gutter="16px"
                 areas="
                 'a b'
                 'c d'
@@ -220,8 +214,7 @@
     <grid-item area="d">d</grid-item>
   </grid-container>
 
-  <pre><code>
-&lt;grid-container gutter="5vh 10vw"
+  <pre><code>&lt;grid-container gutter="5vh 10vw"
                 areas="
                 'a b'
                 'c d'
@@ -244,8 +237,88 @@
     <grid-item area="d">d</grid-item>
   </grid-container>
 
+  <h3>Media Queries</h3>
+
+  <blockquote>
+    <p>Declarative Media Queries</p>
+  </blockquote>
+
+  <pre><code>&lt;grid-container gutter="
+                5px;
+                20px @ (min-width: 30em)"
+                areas="
+                'a b'
+                'c d';
+                'a a a a a a a a a b b b'
+                'a a a a a a a a a c c c'
+                '. . . . . . . . . c c c'
+                '. . . . d d d d . . . .'
+                @ (min-width: 30em);
+                'a a a a a a b b b b b b'
+                'a a a a a a . . c c c c'
+                '. . . . . . . . c c c c'
+                '. . d d d d d d d d . .'
+                @ (min-width: 48em)
+                "&gt;
+   &lt;grid-item area="a"&gt;a&lt;/grid-item&gt;
+   &lt;grid-item area="b"&gt;b&lt;/grid-item&gt;
+   &lt;grid-item area="c"&gt;c&lt;/grid-item&gt;
+   &lt;grid-item area="d"&gt;d&lt;/grid-item&gt;
+&lt;/grid-container&gt;
+</code></pre>
+
+  <grid-container gutter="
+                5px;
+                20px @ (min-width: 30em)"
+                  areas="
+                'a b'
+                'c d';
+                'a a a a a a a a a b b b'
+                'a a a a a a a a a c c c'
+                '. . . . . . . . . c c c'
+                '. . . . d d d d . . . .'
+                @ (min-width: 30em);
+                'a a a a a a b b b b b b'
+                'a a a a a a . . c c c c'
+                '. . . . . . . . c c c c'
+                '. . d d d d d d d d . .'
+                @ (min-width: 48em)
+                ">
+    <grid-item area="a">a</grid-item>
+    <grid-item area="b">b</grid-item>
+    <grid-item area="c">c</grid-item>
+    <grid-item area="d">d</grid-item>
+  </grid-container>
+
+  <pre><code>&lt;grid-container gutter="5vmin"
+                areas="'first second .'
+                       'first third third'"&gt;
+  &lt;grid-item area="first"&gt;First&lt;/grid-item&gt;
+  &lt;grid-item area="second"&gt;Second&lt;/grid-item&gt;
+  &lt;grid-item area="third"&gt;Third&lt;/grid-item&gt;
+  &lt;grid-item row="first-end;
+                  first-start @ (min-width: 48em)"
+             column="second-end"&gt;
+    Fourth
+  &lt;/grid-item&gt;
+&lt;/grid-container&gt;
+</code></pre>
+
+  <grid-container gutter="5vmin"
+                  areas="'first second .'
+                       'first third third'">
+    <grid-item area="first">First</grid-item>
+    <grid-item area="second">Second</grid-item>
+    <grid-item area="third">Third</grid-item>
+    <grid-item row="first-end;
+                  first-start @ (min-width: 48em)"
+               column="second-end">
+      Fourth
+    </grid-item>
+  </grid-container>
+
   <footer>
-    <p><small>&copy; 2017 Charbel Rami. <a href="https://github.com/charbelrami/grid-container">Source code</a> licensed under the MIT License.</small></p>
+    <p><small>&copy; 2017 Charbel Rami. <a href="https://github.com/charbelrami/grid-container">Source code</a> licensed under the <a href="https://raw.githubusercontent.com/charbelrami/grid-container/master/license">MIT License</a>.</small></p>
   </footer>
 </body>
 

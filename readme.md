@@ -127,3 +127,51 @@
 ```
 
 ![Gutter row-column example](docs/img/example-gutter-row-column.png)
+
+### Media Queries
+
+> Declarative Media Queries
+
+```html
+<grid-container gutter="
+                5px;
+                20px @ (min-width: 30em)"
+                areas="
+                'a b'
+                'c d';
+                'a a a a a a a a a b b b'
+                'a a a a a a a a a c c c'
+                '. . . . . . . . . c c c'
+                '. . . . d d d d . . . .'
+                @ (min-width: 30em);
+                'a a a a a a b b b b b b'
+                'a a a a a a . . c c c c'
+                '. . . . . . . . c c c c'
+                '. . d d d d d d d d . .'
+                @ (min-width: 48em)
+                ">
+   <grid-item area="a">a</grid-item>
+   <grid-item area="b">b</grid-item>
+   <grid-item area="c">c</grid-item>
+   <grid-item area="d">d</grid-item>
+</grid-container>
+```
+
+![Media Queries example](docs/img/example-media-query.gif)
+
+```html
+<grid-container gutter="5vmin"
+                areas="'first second .'
+                       'first third third'">
+  <grid-item area="first">First</grid-item>
+  <grid-item area="second">Second</grid-item>
+  <grid-item area="third">Third</grid-item>
+  <grid-item row="first-end;
+                  first-start @ (min-width: 48em)"
+             column="second-end">
+    Fourth
+  </grid-item>
+</grid-container>
+```
+
+![Media Queries example](docs/img/example-media-query-item.gif)

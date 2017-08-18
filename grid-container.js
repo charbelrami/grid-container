@@ -1,8 +1,4 @@
 class GridElement extends HTMLElement {
-  constructor() {
-    super();
-  }
-
   setMediaQueries(attrName, val) {
     let mediaQueryStyleNode = this.shadowRoot.querySelector(`#mq-${attrName}`);
 

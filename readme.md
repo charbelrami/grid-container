@@ -3,6 +3,67 @@
 > CSS Grid Layout + Custom Elements v1 + Shadow DOM v1
 
 ```html
+<grid-container gutter="1rem"
+                areas="
+                      'a a a'
+                      'a a a'
+                      'a a a'
+                      'b b e'
+                      'c c f'
+                      'd d .'
+                      'g h h'
+                      'g h h'
+                      'g i i'
+                      'g . .'
+                      'j j j'
+                      'j j j'
+                      'j j j'
+                      '. . .'
+                      'k k k';
+                      'a a a b b e'
+                      'a a a c c f'
+                      'a a a d d .'
+                      'g . . . . .'
+                      'g h h j j j'
+                      'g h h j j j'
+                      'g i i j j j'
+                      '. . . . . .'
+                      'k k k k k k' @ (min-width: 30em);
+                      '. a a a a b b b e .'
+                      '. a a a a c c c f .'
+                      '. a a a a d d d . .'
+                      '. g . . . . . . . .'
+                      '. g h h h . j j j .'
+                      '. g h h h . j j j .'
+                      '. g i i i . j j j .'
+                      '. . . . . . . . . .'
+                      'k k k k k k k k k k' @ (min-width: 48em);
+                      '. a a a a a b b b e f .'
+                      '. a a a a a c c c . . .'
+                      '. a a a a a d d d . . .'
+                      '. g . . . . . . . . . .'
+                      '. g h h h h . j j j . .'
+                      '. g h h h h . j j j . .'
+                      '. g . i i i . j j j . .'
+                      '. . . . . . . . . . . .'
+                      'k k k k k k k k k k k k' @ (min-width: 67.5em);">
+  <grid-item area="a">a</grid-item>
+  <grid-item area="b">b</grid-item>
+  <grid-item area="c">c</grid-item>
+  <grid-item area="d">d</grid-item>
+  <grid-item area="e">e</grid-item>
+  <grid-item area="f">f</grid-item>
+  <grid-item area="g">g</grid-item>
+  <grid-item area="h">h</grid-item>
+  <grid-item area="i">i</grid-item>
+  <grid-item area="j">j</grid-item>
+  <grid-item area="k">k</grid-item>
+</grid-container>
+```
+
+![Grid Container example 2](docs/img/example-2.gif)
+
+```html
 <grid-container gutter="5vmin"
                 areas="'first second .'
                        'first third third'">
